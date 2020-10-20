@@ -24,39 +24,41 @@ import java.util.Scanner;
  */
 public class Main {
 
+    // Sistema Entrada Teclado
+    public static final Scanner SCN
+            = new Scanner(System.in, "Windows-1252")
+                    .useLocale(Locale.ENGLISH).useDelimiter("\\s+");
+
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // Objeto Scanner
-        Scanner scn = new Scanner(System.in);
-        scn.useLocale(Locale.ENGLISH);
-
-        // Variables
-        double base;
-        double altura;
-        double area;
-
+        // Base
+        double base = 0;
         try {
-            // Base
             System.out.print("Base triángulo ....: ");
-            base = scn.nextDouble();
-            scn.nextLine();
-
-            // Altura
-            System.out.print("Altura triángulo ..: ");
-            altura = scn.nextDouble();
-            scn.nextLine();
-
-            // Area
-            area = base * altura / 2;
-
-            // Mensaje
-            System.out.printf(Locale.ENGLISH,
-                    "Área triángulo ....: %.2f\n", area);
+            base = SCN.nextDouble();
         } catch (Exception e) {
-            System.out.println("Error de entrada");
-            scn.nextLine();
+            System.out.println("ERROR: Entrada incorrecta");
+        } finally {
+            SCN.nextLine();
         }
+
+        double altura = 0;
+        try {
+            System.out.print("Altura triángulo ..: ");
+            altura = SCN.nextDouble();
+        } catch (Exception e) {
+            System.out.println("ERROR: Entrada incorrecta");
+        } finally {
+            SCN.nextLine();
+        }
+
+        // Area
+        double area = base * altura / 2;
+
+        // Mensaje
+        System.out.printf(Locale.ENGLISH,
+                "Área triángulo ....: %.2f%n", area);
     }
 }
